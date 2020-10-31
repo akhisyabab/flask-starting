@@ -1,0 +1,31 @@
+FROM ubuntu:bionic
+
+RUN apt-get update \
+  && apt-get install -y libpq-dev python3-dev \
+     build-essential libssl-dev libffi-dev \
+     libxml2-dev libxslt1-dev zlib1g-dev \
+     python3-pip \
+  && apt-get install -y netcat-openbsd \
+  && cd /usr/local/bin \
+  && ln -s /usr/bin/python3 python \
+  && pip3 install --upgrade pip
+
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+# set working directory
+WORKDIR /usr/src/app
+
+# add and install requirements
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN pip3 install -r requirements.txt
+
+# add entrypoint.sh
+COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# add app
+COPY . /usr/src/app
+
+# run server
+CMD ["./entrypoint.sh"]

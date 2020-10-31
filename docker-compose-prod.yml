@@ -1,0 +1,40 @@
+version: '3.6'
+
+services:
+  engine:
+    container_name: 'flask-starting-engine'
+    build:
+      context: services/engine
+      dockerfile: Dockerfile-prod
+    expose:
+      - 5000
+    environment:
+      - FLASK_APP=manage
+      - FLASK_ENV=production
+      - APP_SETTINGS=project.config.ProductionConfig
+      - DATABASE_URL=postgres://flask_startinguser:flask_startingpassword@engine-db:5432/flask_starting
+    depends_on:
+      - engine-db
+    restart: on-failure
+
+  engine-db:
+    container_name: 'flask-starting-engine-db'
+    build:
+      context: services/engine/db
+      dockerfile: Dockerfile
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_USER=flask_startinguser
+      - POSTGRES_PASSWORD=flask_startingpassword
+
+  nginx:
+    container_name: 'flask-starting-nginx'
+    build:
+      context: ./services/nginx
+      dockerfile: Dockerfile-prod
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - engine

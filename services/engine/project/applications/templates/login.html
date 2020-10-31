@@ -1,0 +1,89 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Login{% endblock %}</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ url_for('static',filename='img/brand/favicon.png') }}" >
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/nucleo/css/nucleo.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" >
+  <!-- Argon CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/argon.css') }}" >
+</head>
+
+<body>
+{% include 'allert_message.html' %}
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header py-7 py-lg-8 pt-lg-9">
+    </div>
+    <!-- Page content -->
+    <div class="container mt--8 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="card bg-secondary border-0 mb-0">
+            <div class="card-header bg-transparent pb-5">
+              <div class="text-muted text-center mt-2 mb-3">Welcome</div>
+              <div class="btn-wrapper text-center">
+                  <span class="btn-inner--icon"><img src="{{ url_for('static',filename='img/avatar-1.png') }}" width="50%"></span>
+              </div>
+            </div>
+            <div class="card-body px-lg-5 py-lg-5">
+              <form role="form" action="{{ url_for('appblueprint.login') }}" method="post">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Username" name="username" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Password" name="password" type="password" required>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="{{ url_for('static',filename='vendor/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='vendor/js-cookie/js.cookie.js') }}"></script>
+  <script src="{{ url_for('static',filename='vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+  <!-- Argon JS -->
+  <script src="{{ url_for('static',filename='js/argon.js') }}"></script>
+</body>
+
+</html>
