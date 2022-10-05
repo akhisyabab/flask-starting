@@ -22,7 +22,7 @@ def create_app(script_info=None):
     from project.models import models
     from project.applications.views import app_blueprint
 
-    if os.environ.get('FLASK_ENV') == 'production':
+    if os.environ.get('ENV_TYPE') == 'production':
         sentry_sdk.init(
             dsn="",
             integrations=[FlaskIntegration()]

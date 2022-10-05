@@ -1,4 +1,4 @@
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -10,7 +10,6 @@ handler.setLevel(logging.INFO)
 app.logger.addHandler(handler)
 
 migrate = Migrate(app, db)
-app.cli.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
     app.run()

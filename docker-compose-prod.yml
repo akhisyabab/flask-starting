@@ -10,7 +10,7 @@ services:
       - 5000
     environment:
       - FLASK_APP=manage
-      - FLASK_ENV=production
+      - ENV_TYPE=production
       - APP_SETTINGS=project.config.ProductionConfig
       - DATABASE_URL=postgres://flask_startinguser:flask_startingpassword@engine-db:5432/flask_starting
     depends_on:
