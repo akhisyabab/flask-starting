@@ -2,7 +2,7 @@ APScheduler==3.9.1
 backoff==2.1.2
 bcrypt==4.0.0
 beautifulsoup4==4.11.1
-Flask==2.2.2
+Flask==2.3.2
 Flask-Bcrypt==1.0.1
 Flask-DebugToolbar==0.13.1
 Flask-Login==0.6.2
